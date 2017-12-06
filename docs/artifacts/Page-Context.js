@@ -10411,7 +10411,7 @@ var _elm_lang$pkgs$Page_Context$pathTo = F2(
 				_elm_lang$pkgs$Utils_Path_ops['</>'],
 				A2(
 					_elm_lang$pkgs$Utils_Path_ops['</>'],
-					A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/packages", _p1.user),
+					A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/elm-storage//packages", _p1.user),
 					_p1.project),
 				_p1.version),
 			file);

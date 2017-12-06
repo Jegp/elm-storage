@@ -41,35 +41,46 @@ Finally you need to handle the result in your ``update`` function:
         case Err error -> ...
 
 For more in-depth examples, please refer to the
-[example on GitHub](https://github.com/Jegp/elm-storage/blob/master/Example.elm).
+[Example.elm](https://github.com/Jegp/elm-storage/blob/master/Example.elm)
+(also available as preview
+[here](https://jegp.github.io/elm-storage/example.html)).
 
 ## Installation instructions
 To install this package, the simplest way is to follow these three steps:
 
 1. Clone the repository onto your own harddrive and place it as a subfolder to
    your project.
-2. Modify your ``elm-package.json`` in the project you would like to use the
-   ``elm-storage`` project. You have to modify it to include the source files
-   from this repository. You can do this by adding the source folder of the
-   ``elm-storage`` project into the list of source files. Since this project
-   contains native JavaScript, you will also have to include a line setting
-   ``"native-modules": true``. Your ``elm-package.json`` should now contain
+2. Modify your ``elm-package.json`` (in the project you would like to use
+   ``elm-storage``) by including the source files directly. This is done by
+   adding the source folder of the ``elm-storage`` project into the list of
+   sources for your current project.
+
+   Since ``elm-storage`` contains native
+   JavaScript, you will also have to include a line setting
+   ``"native-modules": true``.
+
+   Your ``elm-package.json`` should now contain
    something like the following:
    ````elm
    "source-directories": [
        ".",
-       "browser-storage/src"
+       "elm-storage/src"
    ],
    "native-modules": true,
    ````
 3. In your Elm script, import Storage with a line looking like this:
-   ``import Storage exposing(set, get, Storage(SessionStorage))``
+
+   ````elm
+   import Storage exposing(set, get, Storage(SessionStorage))
+   ````
 
    You will of course have to modify this to include the type of storage you
    would like to work with.
 
 Documentation can be found at https://jegp.github.io/elm-storage and I included
 more elaborate examples in [Example.elm](https://github.com/Jegp/elm-storage/blob/master/Example.elm)
+(also available as preview
+[here](https://jegp.github.io/elm-storage/example.html)).
 
 ### Why is this not a package on ``package.elm-lang.org``?
 Two reasons: First of all, this package contains native JavaScript, and the

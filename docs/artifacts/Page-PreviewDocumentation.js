@@ -10681,7 +10681,7 @@ var _elm_lang$pkgs$Page_Context$pathTo = F2(
 				_elm_lang$pkgs$Utils_Path_ops['</>'],
 				A2(
 					_elm_lang$pkgs$Utils_Path_ops['</>'],
-					A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/packages", _p1.user),
+					A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/elm-storage//packages", _p1.user),
 					_p1.project),
 				_p1.version),
 			file);
@@ -10786,7 +10786,7 @@ var _elm_lang$pkgs$Component_Header$versionWarning = function (model) {
 													_elm_lang$pkgs$Utils_Path_ops['</>'],
 													A2(
 														_elm_lang$pkgs$Utils_Path_ops['</>'],
-														A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/packages", _p0._0._0._0),
+														A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/elm-storage//packages", _p0._0._0._0),
 														_p0._0._0._1._0._0),
 													'latest'),
 												moduleName)),
@@ -10901,7 +10901,7 @@ var _elm_lang$pkgs$Component_Header$logo = A2(
 			_elm_lang$html$Html$img,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$src("/assets/elm_logo.svg"),
+				_0: _elm_lang$html$Html_Attributes$src("/elm-storage//assets/elm_logo.svg"),
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$html$Html_Attributes$style(
@@ -11023,7 +11023,7 @@ var _elm_lang$pkgs$Component_Header$unrollModuleeRoute = F4(
 							_elm_lang$pkgs$Utils_Path_ops['</>'],
 							A2(
 								_elm_lang$pkgs$Utils_Path_ops['</>'],
-								A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/packages", user),
+								A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/elm-storage//packages", user),
 								pkg),
 							vsn),
 						_elm_lang$pkgs$Utils_Path$hyphenate(name)),
@@ -11047,7 +11047,7 @@ var _elm_lang$pkgs$Component_Header$unrollVersionRoute = F3(
 						_elm_lang$pkgs$Utils_Path_ops['</>'],
 						A2(
 							_elm_lang$pkgs$Utils_Path_ops['</>'],
-							A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/packages", user),
+							A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/elm-storage//packages", user),
 							pkg),
 						_p5),
 					_p5),
@@ -11071,7 +11071,7 @@ var _elm_lang$pkgs$Component_Header$unrollPackageRoute = F2(
 					_elm_lang$pkgs$Component_Header$headerLink,
 					A2(
 						_elm_lang$pkgs$Utils_Path_ops['</>'],
-						A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/packages", user),
+						A2(_elm_lang$pkgs$Utils_Path_ops['</>'], "/elm-storage//packages", user),
 						_p8),
 					_p8),
 				_1: A2(
@@ -11122,7 +11122,7 @@ var _elm_lang$pkgs$Component_Header$headerLinks = function (model) {
 				_elm_lang$html$Html$a,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$href("/"),
+					_0: _elm_lang$html$Html_Attributes$href("/elm-storage//"),
 					_1: {
 						ctor: '::',
 						_0: _elm_lang$html$Html_Attributes$style(

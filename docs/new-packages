@@ -1,1 +1,1 @@
-["jegp/elm-storage"]
+["jegp/elm-storage", "elm-lang/virtual-dom", "elm-lang/html", "elm-lang/core"]
