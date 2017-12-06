@@ -2,3 +2,9 @@
 elm-stuff
 # elm-repl generated files
 repl-temp-*
+
+# Python documentation generation
+bin/
+include/
+lib/
+pip-selfcheck.json

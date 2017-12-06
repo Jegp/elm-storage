@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Storage",
+    "comment": " This library allows persisting data as key-value pairs via the\n[Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) object\n(either [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage),\n[Session Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)) or as\n[cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) in a browser.\n\nThis module implements basic persistence operations for browsers using either\n[localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage),\n[sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)\nor plain old [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).\n\nIf the local or session storage is not available (for older browsers), we default to simple cookie\nstorage. The stored values in the cookie storage have no expiration (that's\ntechnically not correct - they expire in 2038 - but I sincerely hope you have\nan AI to worry about expired cookies by then).\n\nSee [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) for more\ninformation on session and local storage.\n\n## Usage\nFirst you need to decide which type of storage you wish to use. Use either\n``LocalStorage`` for long-term storage, ``SessionStorage`` for (ta-da)\nsession-long storage or simple ``Cookie``s.\n\nTo retrieve elements, use the ``get`` function which (apart from the storage\ntype) requires a key:\n\n    Storage.get LocalStorage \"myKey\"\n\nThe module uses the Elm [Task](https://guide.elm-lang.org/error_handling/task.html)\nAPI, where each ``Task`` either fails or succeeds. So the above function\nreturns a task. To get the result of the execution, run it with, say,\n``Task.attempt``, using a message you've defined previously:\n\n    type Msg = ... | GetResult (Result String String)\n\n    Storage.get LocalStorage \"myKey\" |> Task.attempt GetResult\n\nFinally you need to handle the result in your ``update`` function:\n\n    case msg of\n      ...\n      GetResult result ->\n        case Ok value -> ...\n        case Err error -> ...\n\nFor more in-depth examples, please refer to the\n[example on GitHub](https://github.com/Jegp/elm-storage/blob/master/Example.elm).\n\n## Credits\nThis module was inspired by the elm-storage module by\n[TheSeamau5](https://github.com/TheSeamau5/elm-storage). This implementation\ndoes not rely on external libraries.\n\n# Storage types\nThe three types of storage, which tells the library where to store and retrieve\ninformation from.\n@docs Storage\n\n# Storage functions\n@docs contains, get, remove, set\n\n",
+    "aliases": [],
+    "types": [
+      {
+        "name": "Storage",
+        "comment": " Represents the three types of storage available: ``LocalStorage`` that\nsaves data without any expiration date, ``SessionStorage`` that stores data\nin the current session only and ``Cookie`` which uses regular Cookies to\nstore the data.\n",
+        "args": [],
+        "cases": [
+          [
+            "LocalStorage",
+            []
+          ],
+          [
+            "SessionStorage",
+            []
+          ],
+          [
+            "Cookie",
+            []
+          ]
+        ]
+      }
+    ],
+    "values": [
+      {
+        "name": "contains",
+        "comment": " Examines whether a given key exist in the storage. Note: This method only\nchecks that the key is in the storage, the value may be empty.\n\nThe ``Storage`` type denotes which storage to use. If the storage does not\nexists in the environment, we default to using cookies without expiration.\n",
+        "type": "Storage.Storage -> String -> Task.Task String Bool"
+      },
+      {
+        "name": "get",
+        "comment": " Gets a value stored under the given key, if it exists.\n\nThe ``Storage`` type denotes which storage to use. If the storage does not\nexists in the environment, we default to using cookies without expiration.\n",
+        "type": "Storage.Storage -> String -> Task.Task String String"
+      },
+      {
+        "name": "remove",
+        "comment": " Removes the key-value pair stored in the storage.\n\nThe ``Storage`` type denotes which storage to use. If the storage does not\nexists in the environment, we default to using cookies without expiration.\n",
+        "type": "Storage.Storage -> String -> Task.Task String ()"
+      },
+      {
+        "name": "set",
+        "comment": " Sets a value under a given key. The ``String`` denotes under which key and the ``Value``\nis the data to store.\n\nThe ``Storage`` type denotes which storage to use. If the storage does not\nexists in the environment, we default to using cookies without expiration.\n",
+        "type": "Storage.Storage -> String -> String -> Task.Task String ()"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  }
+]
