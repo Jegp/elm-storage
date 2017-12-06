@@ -48,22 +48,29 @@ To install this package, the simplest way is to follow these three steps:
 
 1. Clone the repository onto your own harddrive and place it as a subfolder to
    your project.
-2. Modify your ``elm-package.json`` in the project you would like to use the
-   ``elm-storage`` project. You have to modify it to include the source files
-   from this repository. You can do this by adding the source folder of the
-   ``elm-storage`` project into the list of source files. Since this project
-   contains native JavaScript, you will also have to include a line setting
-   ``"native-modules": true``. Your ``elm-package.json`` should now contain
+2. Modify your ``elm-package.json`` (in the project you would like to use
+   ``elm-storage``) by including the source files directly. This is done by
+   adding the source folder of the ``elm-storage`` project into the list of
+   sources for your current project.
+
+   Since ``elm-storage`` contains native
+   JavaScript, you will also have to include a line setting
+   ``"native-modules": true``.
+
+   Your ``elm-package.json`` should now contain
    something like the following:
    ````elm
    "source-directories": [
        ".",
-       "browser-storage/src"
+       "elm-storage/src"
    ],
    "native-modules": true,
    ````
 3. In your Elm script, import Storage with a line looking like this:
-   ``import Storage exposing(set, get, Storage(SessionStorage))``
+
+   ````elm
+   import Storage exposing(set, get, Storage(SessionStorage))
+   ````
 
    You will of course have to modify this to include the type of storage you
    would like to work with.
