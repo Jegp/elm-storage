@@ -41,7 +41,9 @@ Finally you need to handle the result in your ``update`` function:
         case Err error -> ...
 
 For more in-depth examples, please refer to the
-[example on GitHub](https://github.com/Jegp/elm-storage/blob/master/Example.elm).
+[Example.elm](https://github.com/Jegp/elm-storage/blob/master/Example.elm)
+(also available as preview
+[here](https://jegp.github.io/elm-storage/example.html)).
 
 ## Installation instructions
 To install this package, the simplest way is to follow these three steps:
@@ -77,6 +79,8 @@ To install this package, the simplest way is to follow these three steps:
 
 Documentation can be found at https://jegp.github.io/elm-storage and I included
 more elaborate examples in [Example.elm](https://github.com/Jegp/elm-storage/blob/master/Example.elm)
+(also available as preview
+[here](https://jegp.github.io/elm-storage/example.html)).
 
 ### Why is this not a package on ``package.elm-lang.org``?
 Two reasons: First of all, this package contains native JavaScript, and the
