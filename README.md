@@ -13,7 +13,7 @@ an AI to worry about expired cookies by then).
 See [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) for more
 information on session and local storage.
 
-## Usage
+## 1. Usage
 First you need to decide which type of storage you wish to use. Use either
 ``LocalStorage`` for long-term storage, ``SessionStorage`` for (ta-da)
 session-long storage or simple ``Cookie``s.
@@ -45,7 +45,20 @@ For more in-depth examples, please refer to the
 (also available as preview
 [here](https://jegp.github.io/elm-storage/example.html)).
 
-## Installation instructions
+## 2. Installation instructions
+You can either install this using the unofficial elm package manager
+[grove](https://github.com/panosoft/elm-grove) or do it manually.
+
+### 2.1. Install via ``grove``
+``elm-storage`` can be installed directly into an existing elm project:
+````elm
+grove install jegp/elm-storage
+````
+
+This will download the dependency and change your ``elm-package.json`` to
+use the latest version.
+
+### 2.2 Manual installation
 To install this package, the simplest way is to follow these three steps:
 
 1. Clone the repository onto your own harddrive and place it as a subfolder to
@@ -82,7 +95,7 @@ more elaborate examples in [Example.elm](https://github.com/Jegp/elm-storage/blo
 (also available as preview
 [here](https://jegp.github.io/elm-storage/example.html)).
 
-### Why is this not a package on ``package.elm-lang.org``?
+### 2. 3. Why is this not a package on ``package.elm-lang.org``?
 Two reasons: First of all, this package contains native JavaScript, and the
 elm package repository does not allow modules with native code in them.
 Second, the community is working on a new (and, I have to admit, better) way
@@ -93,7 +106,7 @@ the package for the public.
 
 Until then this implementation has proven to be stable.
 
-## Credits
+## 3. Credits
 This module was inspired by the elm-storage module by
 [TheSeamau5](https://github.com/TheSeamau5/elm-storage). This implementation
 does not rely on external libraries.
