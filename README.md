@@ -43,6 +43,45 @@ Finally you need to handle the result in your ``update`` function:
 For more in-depth examples, please refer to the
 [example on GitHub](https://github.com/Jegp/elm-storage/blob/master/Example.elm).
 
+## Installation instructions
+To install this package, the simplest way is to follow these three steps:
+
+1. Clone the repository onto your own harddrive and place it as a subfolder to
+   your project.
+2. Modify your ``elm-package.json`` in the project you would like to use the
+   ``elm-storage`` project. You have to modify it to include the source files
+   from this repository. You can do this by adding the source folder of the
+   ``elm-storage`` project into the list of source files. Since this project
+   contains native JavaScript, you will also have to include a line setting
+   ``"native-modules": true``. Your ``elm-package.json`` should now contain
+   something like the following:
+   ````elm
+   "source-directories": [
+       ".",
+       "browser-storage/src"
+   ],
+   "native-modules": true,
+   ````
+3. In your Elm script, import Storage with a line looking like this:
+   ``import Storage exposing(set, get, Storage(SessionStorage))``
+
+   You will of course have to modify this to include the type of storage you
+   would like to work with.
+
+Documentation can be found at https://jegp.github.io/elm-storage and I included
+more elaborate examples in [Example.elm](https://github.com/Jegp/elm-storage/blob/master/Example.elm)
+
+### Why is this not a package on ``package.elm-lang.org``?
+Two reasons: First of all, this package contains native JavaScript, and the
+elm package repository does not allow modules with native code in them.
+Second, the community is working on a new (and, I have to admit, better) way
+of working with browser storage: https://github.com/elm-lang/persistent-cache.
+I actually contacted the developers about this package, but they politely
+refused any help. So for now we have no choice but to wait until they release
+the package for the public.
+
+Until then this implementation has proven to be stable.
+
 ## Credits
 This module was inspired by the elm-storage module by
 [TheSeamau5](https://github.com/TheSeamau5/elm-storage). This implementation
