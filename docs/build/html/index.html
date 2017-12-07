@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>jegp/elm-storage &mdash; jegp/elm-storage 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="jegp/elm-storage 1.0.0 documentation" href="#"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> jegp/elm-storage
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">jegp/elm-storage</a></li>
+<li><a class="reference internal" href="#elm-storage">Elm storage</a><ul>
+<li><a class="reference internal" href="#usage">1. Usage</a></li>
+<li><a class="reference internal" href="#installation-instructions">2. Installation instructions</a><ul>
+<li><a class="reference internal" href="#install-via-grove">2.1. Install via <code class="docutils literal"><span class="pre">grove</span></code></a></li>
+<li><a class="reference internal" href="#manual-installation">2.2 Manual installation</a></li>
+<li><a class="reference internal" href="#why-is-this-not-a-package-on-package-elm-lang-org">2. 3. Why is this not a package on <code class="docutils literal"><span class="pre">package.elm-lang.org</span></code>?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#credits">3. Credits</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">jegp/elm-storage</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>jegp/elm-storage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jegp-elm-storage">
+<h1>jegp/elm-storage<a class="headerlink" href="#jegp-elm-storage" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="elm-storage">
+<h1>Elm storage<a class="headerlink" href="#elm-storage" title="Permalink to this headline">¶</a></h1>
+<p>This module implements basic persistence operations for browsers using either
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a>,
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">sessionStorage</a>
+or plain old <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">cookies</a>.</p>
+<p>If the local or session storage is not available (for older browsers), we default to simple cookie
+storage. The stored values in the cookie storage have no expiration (that’s
+technically not correct - they expire in 2038 - but I sincerely hope you have
+an AI to worry about expired cookies by then).</p>
+<p>See <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage">Storage</a> for more
+information on session and local storage.</p>
+<div class="section" id="usage">
+<h2>1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>First you need to decide which type of storage you wish to use. Use either
+<code class="docutils literal"><span class="pre">LocalStorage</span></code> for long-term storage, <code class="docutils literal"><span class="pre">SessionStorage</span></code> for (ta-da)
+session-long storage or simple <code class="docutils literal"><span class="pre">Cookie</span></code>s.</p>
+<p>To retrieve elements, use the <code class="docutils literal"><span class="pre">get</span></code> function which (apart from the storage
+type) requires a key:</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>Storage.get LocalStorage &quot;myKey&quot;
+</pre></div>
+</div>
+<p>The module uses the Elm <a class="reference external" href="https://guide.elm-lang.org/error_handling/task.html">Task</a>
+API, where each <code class="docutils literal"><span class="pre">Task</span></code> either fails or succeeds. So the above function
+returns a task. To get the result of the execution, run it with, say,
+<code class="docutils literal"><span class="pre">Task.attempt</span></code>, using a message you’ve defined previously:</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>type Msg = ... | GetResult (Result String String)
+
+Storage.get LocalStorage &quot;myKey&quot; |&gt; Task.attempt GetResult
+</pre></div>
+</div>
+<p>Finally you need to handle the result in your <code class="docutils literal"><span class="pre">update</span></code> function:</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>case msg of
+  ...
+  GetResult result -&gt;
+    case Ok value -&gt; ...
+    case Err error -&gt; ...
+</pre></div>
+</div>
+<p>For more in-depth examples, please refer to the
+<a class="reference external" href="https://github.com/Jegp/elm-storage/blob/master/Example.elm">Example.elm</a>
+(also available as preview
+<a class="reference external" href="https://jegp.github.io/elm-storage/example.html">here</a>).</p>
+</div>
+<div class="section" id="installation-instructions">
+<h2>2. Installation instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h2>
+<p>You can either install this using the unofficial elm package manager
+<a class="reference external" href="https://github.com/panosoft/elm-grove">grove</a> or do it manually.</p>
+<div class="section" id="install-via-grove">
+<h3>2.1. Install via <code class="docutils literal"><span class="pre">grove</span></code><a class="headerlink" href="#install-via-grove" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">elm-storage</span></code> can be installed directly into an existing elm project:</p>
+<div class="highlight-elm"><div class="highlight"><pre><span></span><span class="nv">grove</span> <span class="nv">install</span> <span class="nv">jegp</span><span class="nf">/</span><span class="nv">elm</span><span class="nf">-</span><span class="nv">storage</span>
+</pre></div>
+</div>
+<p>This will download the dependency and change your <code class="docutils literal"><span class="pre">elm-package.json</span></code> to
+use the latest version.</p>
+</div>
+<div class="section" id="manual-installation">
+<h3>2.2 Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h3>
+<p>To install this package, the simplest way is to follow these three steps:</p>
+<ol class="arabic">
+<li><p class="first">Clone the repository onto your own harddrive and place it as a subfolder to
+your project.</p>
+</li>
+<li><p class="first">Modify your <code class="docutils literal"><span class="pre">elm-package.json</span></code> (in the project you would like to use
+<code class="docutils literal"><span class="pre">elm-storage</span></code>) by including the source files directly. This is done by
+adding the source folder of the <code class="docutils literal"><span class="pre">elm-storage</span></code> project into the list of
+sources for your current project.</p>
+<p>Since <code class="docutils literal"><span class="pre">elm-storage</span></code> contains native
+JavaScript, you will also have to include a line setting
+<code class="docutils literal"><span class="pre">&quot;native-modules&quot;:</span> <span class="pre">true</span></code>.</p>
+<p>Your <code class="docutils literal"><span class="pre">elm-package.json</span></code> should now contain
+something like the following:</p>
+<div class="highlight-elm"><div class="highlight"><pre><span></span><span class="s">&quot;source-directories&quot;</span><span class="nf">:</span> <span class="p">[</span>
+    <span class="s">&quot;.&quot;</span><span class="p">,</span>
+    <span class="s">&quot;elm-storage/src&quot;</span>
+<span class="p">],</span>
+<span class="s">&quot;native-modules&quot;</span><span class="nf">:</span> <span class="nv">true</span><span class="p">,</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In your Elm script, import Storage with a line looking like this:</p>
+<div class="highlight-elm"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Storage</span> <span class="nv">exposing</span><span class="p">(</span><span class="nv">set</span><span class="p">,</span> <span class="nv">get</span><span class="p">,</span> <span class="kt">Storage</span><span class="p">(</span><span class="kt">SessionStorage</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You will of course have to modify this to include the type of storage you
+would like to work with.</p>
+</li>
+</ol>
+<p>Documentation can be found at <a class="reference external" href="https://jegp.github.io/elm-storage">https://jegp.github.io/elm-storage</a> and I included
+more elaborate examples in <a class="reference external" href="https://github.com/Jegp/elm-storage/blob/master/Example.elm">Example.elm</a>
+(also available as preview
+<a class="reference external" href="https://jegp.github.io/elm-storage/example.html">here</a>).</p>
+</div>
+<div class="section" id="why-is-this-not-a-package-on-package-elm-lang-org">
+<h3>2. 3. Why is this not a package on <code class="docutils literal"><span class="pre">package.elm-lang.org</span></code>?<a class="headerlink" href="#why-is-this-not-a-package-on-package-elm-lang-org" title="Permalink to this headline">¶</a></h3>
+<p>Two reasons: First of all, this package contains native JavaScript, and the
+elm package repository does not allow modules with native code in them.
+Second, the community is working on a new (and, I have to admit, better) way
+of working with browser storage: <a class="reference external" href="https://github.com/elm-lang/persistent-cache">https://github.com/elm-lang/persistent-cache</a>.
+I actually contacted the developers about this package, but they politely
+refused any help. So for now we have no choice but to wait until they release
+the package for the public.</p>
+<p>Until then this implementation has proven to be stable.</p>
+</div>
+</div>
+<div class="section" id="credits">
+<h2>3. Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This module was inspired by the elm-storage module by
+<a class="reference external" href="https://github.com/TheSeamau5/elm-storage">TheSeamau5</a>. This implementation
+does not rely on external libraries.</p>
+<p>Licensed under BSD3.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jens Egholm Pedersen.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
